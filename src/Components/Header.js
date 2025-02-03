@@ -1,9 +1,28 @@
 import React from "react";
-
+import { auth } from "../Utils/Firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+
+  const Navigate = useNavigate() 
+
+  const HandleSignout = () => {
+    signOut(auth).then(() => {
+      Navigate("/")
+    }).catch((error) => {
+       Navigate("/Error")
+    });
+    
+  }
   return (
-    <div className="absolute px-8 py-2 bg-gradient-to-b from-black z-10">
-      <img className="w-44" src="/Netflixlogo.png" alt="Netflix Logo"  />
+    <div className="absolute w-screen px-8 py-4 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+      <img className="w-44 cursor-pointer" src="/Netflixlogo.png" alt="Netflix Logo" />
+      <div className="flex items-center space-x-6">
+        <img className="w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer hover:border-white transition-all duration-300" src="/Usericonlogo.png" alt="User Logo" />
+        <button  onClick={HandleSignout}   className="bg-red-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-500/50">
+          Sign Out
+        </button>
+      </div>
     </div>
   );
 };  
