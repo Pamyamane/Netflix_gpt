@@ -4,17 +4,16 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
-
 import { useDispatch } from "react-redux";
 import { adduser, removeuser } from "../Utils/UserSlice";
+
 const Header = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-
   useEffect(() => {
-   const unsubscribe =  onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, Password, dispalyName } = user;
         dispatch(
@@ -34,31 +33,30 @@ const Header = () => {
 
     return () => {
       // cleanup
-      unsubscribe()
+      unsubscribe();
     };
   }, []);
 
   const HandleSignout = () => {
     signOut(auth)
-      .then(() => {
-
-      })
+      .then(() => {})
       .catch((error) => {
         Navigate("/Error");
       });
   };
+
   return (
-    <div className="absolute w-screen px-8 py-4 bg-gradient-to-b from-black z-10 flex justify-between items-center">
+    <div className="absolute w-full px-6 py-4 bg-gradient-to-b from-black z-10 flex justify-between items-center md:px-8">
       <img
-        className="w-44 cursor-pointer"
+        className="w-36 sm:w-44 cursor-pointer"
         src="/Netflixlogo.png"
         alt="Netflix Logo"
       />
       {user && (
-        <div className="flex items-center space-x-6">
+        <div className="flex items-center space-x-4 sm:space-x-6">
           <div className="relative group">
             <img
-              className="w-10 h-10 rounded-full border-2 border-gray-300 cursor-pointer hover:border-white transition-all duration-300"
+              className="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-gray-300 cursor-pointer hover:border-white transition-all duration-300"
               src="/Usericonlogo.png"
               alt="User Logo"
             />
@@ -69,7 +67,7 @@ const Header = () => {
 
           <button
             onClick={HandleSignout}
-            className="bg-red-600 text-white px-5 py-2 rounded-md font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-500/50"
+            className="bg-red-600 text-white px-4 py-2 sm:px-5 sm:py-2.5 rounded-md font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg shadow-red-500/50"
           >
             Sign Out
           </button>
