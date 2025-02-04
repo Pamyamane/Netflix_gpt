@@ -36,7 +36,7 @@ const Login = () => {
       if (isSignInForm) {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         Navigate("/browse")
-        console.log("Signed in:", userCredential.user);
+     
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         updateProfile(userCredential, {
@@ -49,7 +49,7 @@ const Login = () => {
           // ...
         });
         Navigate("/browse")
-        console.log("User created:", userCredential.user);
+       
       }
     } catch (error) {
       setErrorMessage(error.code + " - " + error.message);
@@ -64,7 +64,7 @@ const Login = () => {
     const token = credential.accessToken;
     // The signed-in user info.
     const {displayName , email} = result.user;
-    console.log(displayName,"useryy");
+
      dispatch(adduser({ email : email,  displayName : displayName}))
     
     Navigate("/browse")

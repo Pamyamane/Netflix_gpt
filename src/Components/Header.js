@@ -11,10 +11,10 @@ const Header = () => {
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
-  console.log(user, "user");
+
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+   const unsubscribe =  onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, Password, dispalyName } = user;
         dispatch(
@@ -31,6 +31,11 @@ const Header = () => {
         Navigate("/");
       }
     });
+
+    return () => {
+      // cleanup
+      unsubscribe()
+    };
   }, []);
 
   const HandleSignout = () => {
