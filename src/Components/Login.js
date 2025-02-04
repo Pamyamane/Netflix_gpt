@@ -10,9 +10,13 @@ import {
   updateProfile 
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { adduser } from "../Utils/UserSlice";
 
 const Login = () => {
   const Navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [isSignInForm, setIsSignInForm] = useState(true);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -59,7 +63,10 @@ const Login = () => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     // The signed-in user info.
-    const user = result.user;
+    const {displayName , email} = result.user;
+    console.log(displayName,"useryy");
+     dispatch(adduser({ email : email,  displayName : displayName}))
+    
     Navigate("/browse")
     // IdP data available using getAdditionalUserInfo(result)
     // ...
