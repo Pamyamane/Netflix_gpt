@@ -15,12 +15,12 @@ const Maincontainer = () => {
   const { original_title, overview, id } = FirstMovie;
 
   return (
-    <div className="relative w-screen h-screen">
+    <div className="relative w-full h-screen">
       {/* Background Video */}
       <Videobackground MovieId={id} />
 
       {/* Title and Description Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent flex items-center px-12">
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent flex items-center px-6 md:px-12">
         <VideoTittle original_title={original_title} overview={overview} />
       </div>
     </div>
