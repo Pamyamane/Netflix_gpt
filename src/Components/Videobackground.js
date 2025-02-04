@@ -10,11 +10,11 @@ const Videobackground = ({ MovieId }) => {
 
   return (
     <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden">
-      <iframe
+     <iframe
         className="w-full h-full object-cover"
-        src={`https://www.youtube.com/embed/${Trailerkey}?autoplay=1&loop=1&playlist=${Trailerkey}`}
-        title="YouTube video player"
-        allow="autoplay; encrypted-media"
+        src={`https://www.youtube.com/embed/${Trailerkey}?autoplay=1&controls=0&showinfo=0&rel=0&loop=1&playlist=${Trailerkey}`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
       />
     </div>
   );
