@@ -4,13 +4,18 @@ import Videobackground from "./Videobackground";
 import VideoTittle from "./VideoTittle";
 import useNowPlayingmovies from "../CustomHooks/useNowPlayingmovies";
 
+
 const Maincontainer = () => {
   const nowPlayingMovies = useSelector((state) => state?.movies?.NowPalyingmovie);
 
   useNowPlayingmovies();
+
   if (!nowPlayingMovies) return null;
 
-  const FirstMovie = nowPlayingMovies[0];
+
+  const randomIndex = Math.floor(Math.random() * nowPlayingMovies.length);
+  const FirstMovie = nowPlayingMovies[randomIndex];
+  
 
   const { original_title, overview, id } = FirstMovie;
 

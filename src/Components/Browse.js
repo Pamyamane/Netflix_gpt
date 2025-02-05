@@ -3,11 +3,15 @@ import Header from "./Header";
 import useNowPlayingmovies from "../CustomHooks/useNowPlayingmovies";
 import Maincontainer from "./Maincontainer";
 import Secondarycontainer from "./Secondarycontainer";
+import usePopularmovies from "../CustomHooks/usePopularmovies";
+import useTopRatedmovies from "../CustomHooks/useTopRatedmovies";
 
 
 
 const Browse = () => {
   useNowPlayingmovies();
+  usePopularmovies();
+  useTopRatedmovies();
 
 
   return (
@@ -16,7 +20,7 @@ const Browse = () => {
       <Maincontainer />
       <Secondarycontainer/>
   
-      <h2>Browse Page</h2>
+     
     </div>
   );
 };
