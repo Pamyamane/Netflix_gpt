@@ -2,7 +2,6 @@ import React from 'react'
 import { IMG_URL } from '../Utils/Constant'
 
 const MovieCard = ({poster_path}) => {
-    console.log(poster_path,"poster_path");
     
   return (
       <div className="transform transition-all duration-300 hover:scale-110 hover:z-10  overflow-x-scroll">
