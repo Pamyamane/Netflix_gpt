@@ -12,7 +12,7 @@
 
 // export default App;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
   Users, 
   Calendar, 
@@ -23,22 +23,14 @@ import {
   LogOut, 
   Plus, 
   Search, 
-  Filter,
   Eye,
   Edit,
   Trash2,
   User,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
   Stethoscope,
   Bed,
-  Pill,
   TrendingUp,
-  AlertCircle,
-  CheckCircle,
-  XCircle
+
 } from 'lucide-react';
 
 // Mock Data
